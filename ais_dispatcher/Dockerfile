@@ -11,7 +11,8 @@ RUN set -eux; \
         ca-certificates \
         bzip2 \
         tar \
-        xz-utils; \
+        xz-utils \
+        gosu; \
     rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
