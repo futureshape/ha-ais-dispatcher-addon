@@ -26,7 +26,7 @@ if [ -d "/home/ais" ] && [ ! -L "/home/ais" ]; then
 fi
 ln -sfn /data/ais /home/ais
 
-chown -R ais:ais /data/ais
-
 bashio::log.info "Linking architecture-specific binaries"
-s6-setuidgid ais /bin/bash /home/ais/bin/link_binary >/dev/null 2>&1 || true
+/bin/bash /home/ais/bin/link_binary >/dev/null 2>&1 || true
+
+chown -R ais:ais /data/ais
