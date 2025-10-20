@@ -1,5 +1,5 @@
 name: AIS Dispatcher
-version: "0.1.0"
+version: "0.1.1"
 slug: ais_dispatcher
 description: Forward AIS data with the official AIS Dispatcher UI exposed through Home Assistant ingress.
 url: https://www.aishub.net/ais-dispatcher

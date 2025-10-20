@@ -10,4 +10,4 @@ export LD_LIBRARY_PATH=/home/ais/lib
 export PATH="/home/ais/bin:${PATH}"
 export LOG_LEVEL
 
-exec /command/s6-applyuidgid -u ais -g ais /home/ais/bin/aiscontrol
+exec s6-setuidgid ais /home/ais/bin/aiscontrol
