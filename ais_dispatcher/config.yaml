@@ -27,4 +27,4 @@ environment:
 ports: {}
 ports_description: {}
 image: null
-watchdog: http://[HOST]:[PORT]/
+watchdog: http://[HOST]:[PORT:8080]/
