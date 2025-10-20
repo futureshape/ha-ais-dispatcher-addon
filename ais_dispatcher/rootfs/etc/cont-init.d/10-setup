@@ -1,5 +1,7 @@
-#!/command/with-contenv bashio
+#!/usr/bin/env bash
 set -euo pipefail
+
+source /usr/lib/hassio-addons/base.sh
 
 bashio::log.info "Preparing AIS Dispatcher data directory"
 
