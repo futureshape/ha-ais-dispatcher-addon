@@ -26,5 +26,4 @@ environment:
   LOG_LEVEL: "{options.log_level}"
 ports: {}
 ports_description: {}
-image: null
 watchdog: http://[HOST]:[PORT:8080]/
