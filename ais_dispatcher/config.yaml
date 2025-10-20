@@ -1,5 +1,5 @@
 name: AIS Dispatcher
-version: "0.1.4"
+version: "0.2.0"
 slug: ais_dispatcher
 description: Forward AIS data with the official AIS Dispatcher UI exposed through Home Assistant ingress.
 url: https://www.aishub.net/ais-dispatcher
@@ -9,6 +9,7 @@ arch:
   - armv7
 maintainer: AIS Dispatcher Add-on Maintainers
 startup: services
+init: false
 ingress: true
 ingress_port: 8080
 ingress_entry: /

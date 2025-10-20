@@ -35,4 +35,7 @@ RUN set -eux; \
 COPY rootfs /
 
 RUN set -eux; \
+    chmod +x /usr/local/bin/run-ais-dispatcher.sh; \
     chown -R ais:ais /usr/share/aisdispatcher
+
+CMD ["/usr/local/bin/run-ais-dispatcher.sh"]
