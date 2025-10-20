@@ -10,4 +10,9 @@ export LD_LIBRARY_PATH=/home/ais/lib
 export PATH="/home/ais/bin:${PATH}"
 export LOG_LEVEL
 
+bashio::log.info "Executing /home/ais/bin/aiscontrol via gosu"
+if ! command -v gosu >/dev/null 2>&1; then
+	bashio::log.warning "gosu command not found in PATH: ${PATH}"
+fi
+
 exec /usr/sbin/gosu ais /home/ais/bin/aiscontrol
