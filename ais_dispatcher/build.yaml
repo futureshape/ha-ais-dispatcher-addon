@@ -1,0 +1,8 @@
+build_from:
+  aarch64: ghcr.io/home-assistant/aarch64-base-debian:bookworm
+  amd64: ghcr.io/home-assistant/amd64-base-debian:bookworm
+  armv7: ghcr.io/home-assistant/armv7-base-debian:bookworm
+labels:
+  org.opencontainers.image.title: "Home Assistant AIS Dispatcher Add-on"
+  org.opencontainers.image.description: "AIS Dispatcher packaged for Home Assistant with ingress UI"
+  org.opencontainers.image.licenses: "Proprietary"

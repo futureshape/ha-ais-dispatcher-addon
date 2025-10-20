@@ -1,0 +1,32 @@
+#!/command/with-contenv bashio
+set -euo pipefail
+
+bashio::log.info "Preparing AIS Dispatcher data directory"
+
+mkdir -p /data/ais
+
+if ! bashio::fs.file_exists "/data/ais/.installed"; then
+    bashio::log.info "Seeding default application files"
+    cp -a /usr/share/aisdispatcher/. /data/ais/
+    touch /data/ais/.installed
+else
+    for dir in bin lib htdocs update_cache; do
+        rm -rf "/data/ais/${dir}"
+        cp -a "/usr/share/aisdispatcher/${dir}" /data/ais/
+    done
+    for template in aiscontrol.cfg aisdispatcher.json; do
+        if ! bashio::fs.file_exists "/data/ais/etc/${template}"; then
+            cp -a "/usr/share/aisdispatcher/etc/${template}" "/data/ais/etc/${template}"
+        fi
+    done
+fi
+
+if [ -d "/home/ais" ] && [ ! -L "/home/ais" ]; then
+    rm -rf /home/ais
+fi
+ln -sfn /data/ais /home/ais
+
+chown -R ais:ais /data/ais
+
+bashio::log.info "Linking architecture-specific binaries"
+s6-setuidgid ais /bin/bash /home/ais/bin/link_binary >/dev/null 2>&1 || true

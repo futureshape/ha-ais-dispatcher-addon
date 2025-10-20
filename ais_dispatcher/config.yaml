@@ -1,0 +1,30 @@
+name: AIS Dispatcher
+version: "0.1.0"
+slug: ais_dispatcher
+description: Forward AIS data with the official AIS Dispatcher UI exposed through Home Assistant ingress.
+url: https://www.aishub.net/ais-dispatcher
+arch:
+  - aarch64
+  - amd64
+  - armv7
+maintainer: AIS Dispatcher Add-on Maintainers
+startup: services
+ingress: true
+ingress_port: 8080
+ingress_entry: /
+panel_title: AIS Dispatcher
+panel_icon: mdi:ferry
+uart: true
+usb: true
+map:
+  - share:rw
+options:
+  log_level: info
+schema:
+  log_level: list(debug|info|warning|error)
+environment:
+  LOG_LEVEL: "{options.log_level}"
+ports: {}
+ports_description: {}
+image: null
+watchdog: http://[HOST]:[PORT]/

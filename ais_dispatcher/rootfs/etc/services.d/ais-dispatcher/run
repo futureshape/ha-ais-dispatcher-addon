@@ -1,0 +1,13 @@
+#!/command/with-contenv bashio
+set -euo pipefail
+
+LOG_LEVEL="$(bashio::config 'log_level')"
+bashio::log.info "Starting AIS Dispatcher control service"
+bashio::log.info "Log level set to ${LOG_LEVEL}"
+
+export HOME=/home/ais
+export LD_LIBRARY_PATH=/home/ais/lib
+export PATH="/home/ais/bin:${PATH}"
+export LOG_LEVEL
+
+exec s6-setuidgid ais /home/ais/bin/aiscontrol
